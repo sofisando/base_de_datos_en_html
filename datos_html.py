@@ -1,4 +1,9 @@
+import cgi
 import mysql.connector #libreria externa que vamos a usar de un tercero
+
+#header
+print ("Content-Type: text/html")  
+print() 
 
 conexion1=mysql.connector.connect(host="localhost",
                                    user="publico3", 
@@ -7,26 +12,17 @@ conexion1=mysql.connector.connect(host="localhost",
 cursor1=conexion1.cursor() #se crea como un cursor
 cursor1.execute("select * from autor")
 
-print("""<html>
-    
-<table>
-  <tr>
-    <th>id_autor</th>
-    <th>nombre</th>
-    <th>edad</th>
-  </tr>
-  <tr>
-    </html>""")
-for fila in cursor1:
-print("""<html>
-      <td>
-      </html>""")
+print("<html>")
+print("<h1>Lista de Autores</h1>")
+print("<table border='1'>")
+print("<tr><th>ID</th><th>Nombre</th><th>Edad</th></tr>")
 
-print(fila[0])
-print("""<html>
-</td>
-  </tr>
-</table>   
-</html>""")
+  # Iteramos sobre los resultados de la consulta y los imprimimos en la tabla HTML
+for fila in cursor1:
+    print(f"<tr><td>{fila[0]}</td><td>{fila[1]}</td><td>{fila[2]}</td></tr>")
+
+print("</table>")
+print("</body>")
+print("</html>")
 
 conexion1.close() #esto como buena practica de programacion cerrar despues de usar
