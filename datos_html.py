@@ -13,6 +13,7 @@ cursor1=conexion1.cursor() #se crea como un cursor
 cursor1.execute("select * from autor")
 
 print("<html>")
+print("<body>")
 print("<h1>Lista de Autores</h1>")
 print("<table border='1'>")
 print("<tr><th>ID</th><th>Nombre</th><th>Edad</th></tr>")
